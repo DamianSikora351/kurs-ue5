@@ -3,7 +3,7 @@ name: Sync Notion to GitHub
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'  # Codziennie o 03:00 UTC
+    - cron: '0 3 * * *'
 
 jobs:
   sync-notion:
@@ -17,21 +17,21 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: |
-          npm install -g notion-to-md
+      - name: Install notion-to-md
+        run: npm install -g notion-to-md
 
       - name: Sync Notion page
         env:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
+          NOTION2MD_FILE_NAME: kurs-z-notion.md
         run: |
-          npx notion2md $NOTION_PAGE_ID --output kurs-z-notion.md
-
+          npx notion2md
+          
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add kurs-z-notion.md
-          git commit -m "Update from Notion" || echo "No changes"
+          git add kurs-z-notion.md || true
+          git commit -m "Update from Notion" || echo "No changes to commit"
           git push
