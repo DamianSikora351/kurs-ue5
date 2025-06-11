@@ -1,0 +1,43 @@
+# 🎓 Szablon kursu Unreal Engine 5 (UE5)
+
+## 1. Interfejs i panele UE5
+
+## 2. Materiały i Shadery
+
+- 🔹 Material Functions
+- 🔹 Landscape Materials (warstwy, slope, height blend)
+- 🔹 Tiling, Triplanar, World Aligned Texture
+- 🔹 Import tekstur z Quixel/Megascans
+
+## 3. Tworzenie Assetów
+
+- 🔹 Static Meshes – import i kolizje
+- 🔹 Nanite Meshes – optymalizacja
+- 🔹 Decals – szczegóły powierzchni
+
+## 4. Blueprinty i logika gry
+
+- 🔹 Blueprint Actor vs Class
+- 🔹 Event Graph, Variables
+- 🔹 Interakcje: input, trigger, UI
+- 🔹 Proste mechaniki (np. drzwi, przełączniki)
+
+## 5. Optymalizacja
+
+- 🔹 LOD – automatyczne / ręczne
+- 🔹 Instance Static Meshes
+- 🔹 Occlusion / Distance Culling
+- 🔹 Profiling: Stat Unit, Stat FPS, GPU Visualizer
+
+## 6. Dodatkowe narzędzia
+
+- 🔹 Niagara FX – efekty cząsteczkowe
+- 🔹 Sequencer – cinematici
+- 🔹 Lumen, Nanite – konfiguracja
+- 🔹 Marketplace – przydatne pluginy
+
+## 7. Linki i źródła
+
+- 📺 YouTube:
+- 📄 Dokumentacja UE5 (Epic Games)
+- 📂 Kursy i assety z GitHub
