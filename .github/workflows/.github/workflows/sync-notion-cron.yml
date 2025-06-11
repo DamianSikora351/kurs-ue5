@@ -1,9 +1,9 @@
-name: Sync Notion to GitHub (Daily)
+name: Synchronizuj Notion z GitHub (codziennie)
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 7 * * *' # Codziennie o 07:00 UTC (09:00 czasu polskiego)
+    - cron: '0 7 * * *' # 09:00 czasu polskiego
+  workflow_dispatch:
 
 jobs:
   sync-notion:
