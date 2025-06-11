@@ -1,4 +1,4 @@
-ame: Sync Notion to GitHub
+name: Sync Notion to GitHub
 
 on:
   workflow_dispatch:
