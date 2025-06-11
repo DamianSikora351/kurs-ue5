@@ -1,0 +1,36 @@
+name: Sync Notion to GitHub (Daily)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * *' # Codziennie o 07:00 UTC (09:00 czasu polskiego)
+
+jobs:
+  sync-notion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install notion-to-md
+        run: npm install -g notion-to-md
+
+      - name: Sync Notion page to Markdown
+        run: |
+          npx notion2md $NOTION_PAGE_ID --output kurs-z-notion.md
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_TOKEN }}
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add kurs-z-notion.md
+          git commit -m "📄 Automatyczna synchronizacja z Notion" || echo "No changes"
+          git push
