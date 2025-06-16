@@ -1,4 +1,3 @@
-name: Sync Notion to GitHub
 
 on:
   workflow_dispatch:
@@ -20,56 +19,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install notion-to-md
-        run: npm install -g notion-to-md
+      - name: Install dependencies
+        run: npm install @notionhq/client notion-to-md
 
       - name: Create docs folder
         run: mkdir -p docs
 
       - name: Export Notion pages
-        run: |
-          npx notion2md --page 20f2d9bf43e68015a3c0e9429e0dd8c5 --output docs/01-interfejs.md
-          npx notion2md --page 20f2d9bf43e680da9e2ff3f4cf3bb0f8 --output docs/01-viewport.md
-          npx notion2md --page 20f2d9bf43e680e7bda5e9d70d4bacc0 --output docs/01-content-browser.md
-          npx notion2md --page 20f2d9bf43e680258f28e5f18362bf01 --output docs/01-world-outliner.md
-          npx notion2md --page 20f2d9bf43e680e49165d1c5204e4038 --output docs/01-details-panel.md
-          npx notion2md --page 20f2d9bf43e680cdb867ee03e3631767 --output docs/01-toolbar.md
-          npx notion2md --page 20f2d9bf43e68067abd1d669a64a9f30 --output docs/01-project-settings.md
-
-          npx notion2md --page 20f2d9bf43e680bc8314ce9ddcb2c714 --output docs/02-materialy.md
-          npx notion2md --page 20f2d9bf43e6808b8e0de7e054513807 --output docs/02-material-base.md
-          npx notion2md --page 20f2d9bf43e6809c87dfe48db8979c5f --output docs/02-material-functions.md
-          npx notion2md --page 20f2d9bf43e6802990eed2375115f293 --output docs/02-landscape.md
-          npx notion2md --page 20f2d9bf43e680989560dbb0bd8d2514 --output docs/02-tiling.md
-          npx notion2md --page 20f2d9bf43e680eba506d8571ec3ce1f --output docs/02-quixel.md
-
-          npx notion2md --page 20f2d9bf43e6804b9b4ddfc85a5c9a71 --output docs/03-assety.md
-          npx notion2md --page 20f2d9bf43e6808f857af0851dcc47e9 --output docs/03-static-mesh.md
-          npx notion2md --page 20f2d9bf43e680a58236df60c85b163f --output docs/03-nanite.md
-          npx notion2md --page 20f2d9bf43e68061bcb3cf98d457ea76 --output docs/03-decals.md
-
-          npx notion2md --page 20f2d9bf43e6801fbd8de5fb00688cdf --output docs/04-blueprinty.md
-          npx notion2md --page 20f2d9bf43e6809b83bbd0699d77b1c9 --output docs/04-blueprint-actor-class.md
-          npx notion2md --page 20f2d9bf43e6803497a8fadb94547e3a --output docs/04-event-graph.md
-          npx notion2md --page 20f2d9bf43e68091b677c9b99764390b --output docs/04-interakcje.md
-          npx notion2md --page 20f2d9bf43e6806a971cf263d8984982 --output docs/04-mechaniki.md
-
-          npx notion2md --page 20f2d9bf43e6805faba7fe524cd56969 --output docs/05-optymalizacja.md
-          npx notion2md --page 20f2d9bf43e6804ab951eb23edead6d2 --output docs/05-lod.md
-          npx notion2md --page 20f2d9bf43e680f4a14bf9ffd040b8ba --output docs/05-instance-static-mesh.md
-          npx notion2md --page 20f2d9bf43e6802088bfd1a06bdf0b07 --output docs/05-occlusion-culling.md
-          npx notion2md --page 20f2d9bf43e6806a9d75fcb671ebdf1d --output docs/05-profiling.md
-
-          npx notion2md --page 20f2d9bf43e680c3ba40f092d89205b4 --output docs/06-narzedzia.md
-          npx notion2md --page 20f2d9bf43e6808c87ebe00338c6846a --output docs/06-niagara.md
-          npx notion2md --page 20f2d9bf43e680fa92cbe2b80128212b --output docs/06-sequencer.md
-          npx notion2md --page 20f2d9bf43e6802cadd3c3063423f6d5 --output docs/06-lumen-nanite.md
-          npx notion2md --page 20f2d9bf43e680429544ce9a6e09ac50 --output docs/06-marketplace.md
-
-          npx notion2md --page 20f2d9bf43e68014ade4f3f93f2aadda --output docs/07-linki.md
-          npx notion2md --page 20f2d9bf43e68078914ff3e900718bf3 --output docs/07-youtube.md
-          npx notion2md --page 20f2d9bf43e680a2b294eeffbc70295c --output docs/07-dokumentacja.md
-          npx notion2md --page 20f2d9bf43e680d396aae4b2ef05bb7f --output docs/07-github.md
+        run: node export-notion.js
 
       - name: Commit changes
         run: |
