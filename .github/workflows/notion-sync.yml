@@ -3,7 +3,7 @@ name: Sync Notion to GitHub
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 3 * * *'  # Codziennie o 03:00 UTC / 05:00 polskiego czasu
 
 jobs:
   sync-notion:
@@ -25,53 +25,55 @@ jobs:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
         run: |
           mkdir -p docs
-          npx notion2md 20f2d9bf43e68015a3c0e9429e0dd8c5 --output docs/01-interfejs-i-panele-ue5.md
-          npx notion2md 20f2d9bf43e680da9e2ff3f4cf3bb0f8 --output docs/01a-viewport.md
-          npx notion2md 20f2d9bf43e680e7bda5e9d70d4bacc0 --output docs/01b-content-browser.md
-          npx notion2md 20f2d9bf43e680258f28e5f18362bf01 --output docs/01c-world-outliner.md
-          npx notion2md 20f2d9bf43e680e49165d1c5204e4038 --output docs/01d-details-panel.md
-          npx notion2md 20f2d9bf43e680cdb867ee03e3631767 --output docs/01e-toolbar.md
-          npx notion2md 20f2d9bf43e68067abd1d669a64a9f30 --output docs/01f-project-settings.md
 
-          npx notion2md 20f2d9bf43e680bc8314ce9ddcb2c714 --output docs/02-materialy-i-shadery.md
-          npx notion2md 20f2d9bf43e6808b8e0de7e054513807 --output docs/02a-tworzenie-materiałów.md
-          npx notion2md 20f2d9bf43e6809c87dfe48db8979c5f --output docs/02b-material-functions.md
-          npx notion2md 20f2d9bf43e6802990eed2375115f293 --output docs/02c-landscape-materials.md
-          npx notion2md 20f2d9bf43e680989560dbb0bd8d2514 --output docs/02d-tiling-triplanar.md
-          npx notion2md 20f2d9bf43e680eba506d8571ec3ce1f --output docs/02e-import-tekstur.md
+          npx notion2md 20f2d9bf43e68015a3c0e9429e0dd8c5 --output docs/01_interfejs.md
+          npx notion2md 20f2d9bf43e680da9e2ff3f4cf3bb0f8 --output docs/01_viewport.md
+          npx notion2md 20f2d9bf43e680e7bda5e9d70d4bacc0 --output docs/01_content_browser.md
+          npx notion2md 20f2d9bf43e680258f28e5f18362bf01 --output docs/01_world_outliner.md
+          npx notion2md 20f2d9bf43e680e49165d1c5204e4038 --output docs/01_details_panel.md
+          npx notion2md 20f2d9bf43e680cdb867ee03e3631767 --output docs/01_toolbar.md
+          npx notion2md 20f2d9bf43e68067abd1d669a64a9f30 --output docs/01_project_settings.md
 
-          npx notion2md 20f2d9bf43e6804b9b4ddfc85a5c9a71 --output docs/03-tworzenie-assetow.md
-          npx notion2md 20f2d9bf43e6808f857af0851dcc47e9 --output docs/03a-static-meshes.md
-          npx notion2md 20f2d9bf43e680a58236df60c85b163f --output docs/03b-nanite-meshes.md
-          npx notion2md 20f2d9bf43e68061bcb3cf98d457ea76 --output docs/03c-decals.md
+          npx notion2md 20f2d9bf43e680bc8314ce9ddcb2c714 --output docs/02_materialy.md
+          npx notion2md 20f2d9bf43e6808b8e0de7e054513807 --output docs/02_tworz_materialy.md
+          npx notion2md 20f2d9bf43e6809c87dfe48db8979c5f --output docs/02_functions.md
+          npx notion2md 20f2d9bf43e6802990eed2375115f293 --output docs/02_landscape.md
+          npx notion2md 20f2d9bf43e680989560dbb0bd8d2514 --output docs/02_triplanar.md
+          npx notion2md 20f2d9bf43e680eba506d8571ec3ce1f --output docs/02_quixel.md
 
-          npx notion2md 20f2d9bf43e6801fbd8de5fb00688cdf --output docs/04-blueprinty-i-logika.md
-          npx notion2md 20f2d9bf43e6809b83bbd0699d77b1c9 --output docs/04a-actor-vs-class.md
-          npx notion2md 20f2d9bf43e6803497a8fadb94547e3a --output docs/04b-event-graph.md
-          npx notion2md 20f2d9bf43e68091b677c9b99764390b --output docs/04c-interakcje.md
-          npx notion2md 20f2d9bf43e6806a971cf263d8984982 --output docs/04d-mechaniki.md
+          npx notion2md 20f2d9bf43e6804b9b4ddfc85a5c9a71 --output docs/03_assety.md
+          npx notion2md 20f2d9bf43e6808f857af0851dcc47e9 --output docs/03_static_meshes.md
+          npx notion2md 20f2d9bf43e680a58236df60c85b163f --output docs/03_nanite.md
+          npx notion2md 20f2d9bf43e68061bcb3cf98d457ea76 --output docs/03_decals.md
 
-          npx notion2md 20f2d9bf43e6805faba7fe524cd56969 --output docs/05-optymalizacja.md
-          npx notion2md 20f2d9bf43e6804ab951eb23edead6d2 --output docs/05a-lod.md
-          npx notion2md 20f2d9bf43e680f4a14bf9ffd040b8ba --output docs/05b-instance-static.md
-          npx notion2md 20f2d9bf43e6802088bfd1a06bdf0b07 --output docs/05c-occlusion.md
-          npx notion2md 20f2d9bf43e6806a9d75fcb671ebdf1d --output docs/05d-profiling.md
+          npx notion2md 20f2d9bf43e6801fbd8de5fb00688cdf --output docs/04_blueprinty.md
+          npx notion2md 20f2d9bf43e6809b83bbd0699d77b1c9 --output docs/04_actor_vs_class.md
+          npx notion2md 20f2d9bf43e6803497a8fadb94547e3a --output docs/04_event_graph.md
+          npx notion2md 20f2d9bf43e68091b677c9b99764390b --output docs/04_interakcje.md
+          npx notion2md 20f2d9bf43e6806a971cf263d8984982 --output docs/04_mechaniki.md
 
-          npx notion2md 20f2d9bf43e680c3ba40f092d89205b4 --output docs/06-narzedzia-dodatkowe.md
-          npx notion2md 20f2d9bf43e6808c87ebe00338c6846a --output docs/06a-niagara.md
-          npx notion2md 20f2d9bf43e680fa92cbe2b80128212b --output docs/06b-sequencer.md
-          npx notion2md 20f2d9bf43e6802cadd3c3063423f6d5 --output docs/06c-lumen-nanite.md
-          npx notion2md 20f2d9bf43e680429544ce9a6e09ac50 --output docs/06d-marketplace.md
+          npx notion2md 20f2d9bf43e6805faba7fe524cd56969 --output docs/05_optymalizacja.md
+          npx notion2md 20f2d9bf43e6804ab951eb23edead6d2 --output docs/05_lod.md
+          npx notion2md 20f2d9bf43e680f4a14bf9ffd040b8ba --output docs/05_instance_meshes.md
+          npx notion2md 20f2d9bf43e6802088bfd1a06bdf0b07 --output docs/05_occlusion.md
+          npx notion2md 20f2d9bf43e6806a9d75fcb671ebdf1d --output docs/05_profiling.md
 
-          npx notion2md 20f2d9bf43e68014ade4f3f93f2aadda --output docs/07-linki-zrodla.md
-          npx notion2md 20f2d9bf43e68078914ff3e900718bf3 --output docs/07a-youtube.md
-          npx notion2md 20f2d9bf43e680a2b294eeffbc70295c --output docs/07b-dokumentacja.md
-          npx notion2md 20f2d9bf43e680d396aae4b2ef05bb7f --output docs/07c-github-kursy.md
+          npx notion2md 20f2d9bf43e680c3ba40f092d89205b4 --output docs/06_narzedzia.md
+          npx notion2md 20f2d9bf43e6808c87ebe00338c6846a --output docs/06_niagara.md
+          npx notion2md 20f2d9bf43e680fa92cbe2b80128212b --output docs/06_sequencer.md
+          npx notion2md 20f2d9bf43e6802cadd3c3063423f6d5 --output docs/06_lumen_nanite.md
+          npx notion2md 20f2d9bf43e680429544ce9a6e09ac50 --output docs/06_marketplace.md
+
+          npx notion2md 20f2d9bf43e68014ade4f3f93f2aadda --output docs/07_linki.md
+          npx notion2md 20f2d9bf43e68078914ff3e900718bf3 --output docs/07_youtube.md
+          npx notion2md 20f2d9bf43e680a2b294eeffbc70295c --output docs/07_dokumentacja.md
+          npx notion2md 20f2d9bf43e680d396aae4b2ef05bb7f --output docs/07_github_assets.md
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add docs/ || true
-          git commit -m "Aktualizacja kursu z Notion" || echo "No changes to commit"
+          git add docs/*.md || true
+          git commit -m "📚 Automatyczna synchronizacja z Notion" || echo "Brak zmian"
           git push
+
