@@ -1,8 +1,9 @@
+name: Sync Notion to GitHub
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Ręczne uruchamianie z GitHub UI
   schedule:
-    - cron: '0 3 * * *' # codziennie o 03:00
+    - cron: '0 3 * * *' # Codziennie o 03:00 UTC
 
 jobs:
   sync-notion:
@@ -35,4 +36,3 @@ jobs:
           git add docs/*.md || true
           git commit -m "Update from Notion" || echo "No changes to commit"
           git push
-
